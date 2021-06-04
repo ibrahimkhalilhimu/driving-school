@@ -1,0 +1,16 @@
+.chooseUs h1 {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: 0.396px;
+  color: #111430;
+}
+.chooseUs h4 {
+  padding: 5px;
+  margin-top: 25px;
+  text-transform: uppercase;
+}
+.choice {
+  margin-bottom: 50px;
+}

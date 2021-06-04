@@ -1,0 +1,32 @@
+.services {
+  margin-bottom: 40px;
+}
+.titles::before {
+  content: " ";
+  background: #7b1798;
+  height: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transform: translateY(63px);
+}
+.titles::after {
+  content: " ";
+  background: #7b1798;
+  height: 15px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: block;
+  transform: translateY(8px);
+}
+.services h1 {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: 0.396px;
+  color: #111430;
+}

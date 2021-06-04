@@ -1,0 +1,19 @@
+.login {
+  background-color: red;
+  color: white !important;
+  border-radius: 5px;
+  padding: 10px 30px !important;
+}
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+  margin-left: 15px !important;
+}
+button {
+  background-color: white;
+  color: white !important;
+}
+.header {
+  background-image: linear-gradient(to right, #a517ba, #5f1782);
+  top: fixed;
+}
