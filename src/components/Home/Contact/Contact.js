@@ -2,10 +2,10 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <section id="contact"> 
+        <div id="contact"> 
              <div className="container">
                 <div className="row contacts">
-            <div className="col-md-5 offset-md-0 pt-5">
+            <div className="col-md-6 pt-5">
                 <h1> Any Questions? Fill-In<br/> The Form & Send Today!</h1>
                 <p>With well written codes, we build amazing apps for all<br/> platforms, mobile and web apps in general.</p>
             </div>
@@ -27,7 +27,7 @@ const Contact = () => {
             </div>
             </div>
             </div>
-        </section>
+        </div>
     );
 };
 

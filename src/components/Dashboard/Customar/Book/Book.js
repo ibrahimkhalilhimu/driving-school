@@ -10,44 +10,52 @@ const Book = () => {
     return (
         <div className="bookPage">
             <Sidebar/>
-            {/* <h2>Thus us dolor</h2> */}
             
-<section class="mt-5 pt-3">
-      <div class="container-fluid">
-       <form className="" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-group mt-5  pt-5">
+<section class="pt-3">
+      <div class="container-fluid ">
+    <div className="row">
+        <div className="col-md-12">
+        <div className="fromSection">
+     <form className="" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group pt-5">
                     <input type="text" 
                         name="name" 
-                        className="form-control input"
+                        className="form-control "
                         placeholder="Your Name"
                         {...register("Name", {required: true})}
                         />
-
+                        <br/>
                     </div>
                     <div className="form-group">
                     <input type="email" 
       name="email" 
-     className="form-control input"
+     className="form-control "
       placeholder="@gmail.com"
           {...register("Email", {required: true, pattern: /^\S+@\S+$/i})}
      />
+      <br/>
                     </div>
                     <div className="form-group">
-                    <input type="number" placeholder="Number" {...register("Number", {})} />
+                    <input type="number" className="form-control " placeholder="Number" {...register("Number", {required: true})} />
+                    <br/>
                     </div>
                     <div className="form-group">
                     <input type="text" 
                         name="text" 
-                        className="form-control input"
+                        className="form-control "
                         placeholder="Course Name"
                         {...register("Text", {required: true})}
                         />
+                         <br/>
                     </div>
 
-                    <div className="form-group ">
-                        <button type="submit" className="btn bg-dark text-white">Send</button>
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" className="btn bg-info text-white">Send</button>
                     </div>
                 </form>
+     </div>
+        </div>
+    </div>
         </div>
 </section>
         </div>

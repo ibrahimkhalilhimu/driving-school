@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
+import { BsListCheck } from "react-icons/bs";
+
 const Header = () => {
     return (
         <div className="header">
@@ -9,7 +11,10 @@ const Header = () => {
   <span style={{color:"white"}}><b>D</b>riving <b>S</b>chool</span>
   </Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span  style={{color:"white"}} className="navbar-toggler-icon"></span>
+    {/* <span  style={{color:"white !important"}} className="navbar-toggler-icon"></span> */}
+    <BsListCheck 
+    size="30px"
+    />
   </button>
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav ms-auto">
@@ -26,7 +31,7 @@ const Header = () => {
         <a className="nav-link" href="#contact">Contact</a>
       </li>
       <li className="nav-item ">
-        <Link className="nav-link" to="/books">Dashboard
+        <Link className="nav-link" to="/profile">Dashboard
 </Link>
       </li>
       <li className="nav-item">

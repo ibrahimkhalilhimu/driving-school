@@ -1,12 +1,10 @@
-.bookingList {
+.profile {
   background: #f4f7fc;
   width: 100%;
   height: 100vh;
 }
-.bookingList .card {
-  height: 254px;
-  background: #ffffff;
-  border-radius: 20px;
+.profile .card {
+  height: 319px;
   background: #ffffff;
   box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.1);
   border-radius: 10px;

@@ -12,23 +12,29 @@ console.log(window.location.pathname );
         <div className="sidebar">
              <nav className="navbar navbar-expand-lg navbar-light bg-white ">
   <div className="container-fluid">
-  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
   <span className="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
 </button>
+{window.location.pathname ==='/profile'&&
+  <Link className="navbar-brand me-auto ps-3 text-danger" to="/profile">
+  Profile
+</Link>
+
+}
 {window.location.pathname ==='/reviews'&&
-  <Link className="navbar-brand me-auto ps-3" to="/reviews">
+  <Link className="navbar-brand me-auto ps-3 text-danger" to="/reviews">
   Reviews
 </Link>
 
 }
 {window.location.pathname ==='/books'&&
-  <Link className="navbar-brand me-auto ps-3" to="/books">
+  <Link className="navbar-brand me-auto ps-3 text-danger" to="/books">
   Book
 </Link>
 
 }
 {window.location.pathname ==='/bookingList'&&
-  <Link className="navbar-brand me-auto ps-3" to="/bookingList">
+  <Link className="navbar-brand me-auto ps-3 text-danger" to="/bookingList">
   Booking List
 </Link>
 
@@ -51,7 +57,7 @@ console.log(window.location.pathname );
 {/* OffsNav */}
 
 
-<div className="offcanvas offcanvas-start sidebar-nav mt-1" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div className="offcanvas offcanvas-start sidebar-nav mt-1" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div className="offcanvas-header">
     <h5 className="offcanvas-title ms-3 fw-bold" id="offcanvasExampleLabel">Dashboard</h5>
     <button type="button" className="btn-close text-reset closeBtn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -60,7 +66,7 @@ console.log(window.location.pathname );
   <nav class="navbar-dark">
           <ul class="navbar-nav">
             <li>
-              <Link to="#" class="nav-link ">
+              <Link to="/profile" class="nav-link ">
                 <span class="me-2">
                     <BiUserCircle 
                     size="28px"

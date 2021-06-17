@@ -1,99 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReviewData from '../../Data/ReviewsData/ReviewsData';
 import './Testimonial.css'
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css"
+import SwiperCore, {Lazy, Autoplay,Keyboard, Pagination,Navigation  } from 'swiper/core';
+import { Swiper, SwiperSlide } from "swiper/react";
+import TestimonialCard from './TestimonialCard';
+
+// install Swiper modules
+SwiperCore.use([Lazy,Autoplay,Keyboard, Pagination,Navigation]);
+
 
 const Testimonial = () => {
+
+    const [reviewsData,setReviewsData] = useState(ReviewData)
     return (
         <div className="testimonial" id="testimonial">
             <div className="container text-center">
                 <h1 className="title-testi">What Our Clients are saying</h1>
-    <div className="row">
-        <div className="col-md-12">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol className="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-  </ol>
-  <div className="carousel-inner">
-  <div className="carousel-item active">
-      <div className="row">
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person One</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person two</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person three</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div className="carousel-item">
-      <div className="row">
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person four</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person five</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-          <div className="col-md-4">
-              <div className="singleBox">
-                  <div className="img-area">
-                      <img src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
-                  </div>
-                  <div className="img-text">
-                      <h2>Person six</h2>
-                      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, laudantium optio? Eos officia eaque provident sequi quod porro natus exercitationem aliquam, culpa ratione quasi accusantium</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
-        </div>
-        </div>
-    </div>
-            </div>
-        </div>
+             
+<div className="row">
+                <Swiper
+                
+                            slidesPerView={1}
+                            spaceBetween={10}
+                            // loop={true}
+                            keyboard={{
+                                "enabled": true
+                            }}
+                            autoHeight={true}
+                            pagination={{
+                                "clickable": true
+                            }}
+                            navigation={true}
+                            autoplay={{
+                                "delay": 2500,
+                                "disableOnInteraction": false
+                            }}
+                            lazy={true}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 2,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 10,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 10,
+                                }
+                            }} className="mySwiper">
+
+
+
+
+{
+            reviewsData.map(testimonial => {
+                return (
+                    <SwiperSlide>
+                   <TestimonialCard {...testimonial}/>
+                </SwiperSlide>
+    
+   
+              
+              )
+            }
+
+                )
+        } 
+
+                       </Swiper>
+    
+</div>     
+</div>
+</div>
+
+         
     );
 };
 

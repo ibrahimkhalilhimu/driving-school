@@ -11,6 +11,7 @@ import SignIn from './components/Auth/SignIn/SignIn';
 import Book from './components/Dashboard/Customar/Book/Book';
 import BookingList from './components/Dashboard/Customar/BookingList/BookingList';
 import Reviews from './components/Dashboard/Customar/Review/Reviews';
+import Profile from './components/Dashboard/Profile/Profile';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
              </Route>
              <Route path="/reviews"> 
              <Reviews/>
+             </Route>
+             <Route path="/profile"> 
+             <Profile/>
              </Route>
          </Switch>
       </Router>
