@@ -12,6 +12,16 @@ const Book = () => {
     const homeData =CourseData.find(data => data.id == id);
     console.log(homeData);
     
+    const handleAdd =()=>{
+        fetch('http://localhost:5000/addCourses', {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json' 
+            },
+            body: JSON.stringify(CourseData),
+          
+          })
+    }
 
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
@@ -65,6 +75,8 @@ const Book = () => {
                     </div>
                 </form>
      </div>
+
+     <button onClick={handleAdd} className="btn btn-danger">add product</button>
         </div>
     </div>
         </div>
