@@ -12,10 +12,20 @@ import Book from './components/Dashboard/Customar/Book/Book';
 import BookingList from './components/Dashboard/Customar/BookingList/BookingList';
 import Reviews from './components/Dashboard/Customar/Review/Reviews';
 import Profile from './components/Dashboard/Profile/Profile';
+import CourseData from './components/Data/CourseData/CourseData';
+
+import { createContext, useState } from 'react';
+
+export const UserCourseInfo = createContext()
 
 function App() {
+
+const [courseInfo,setCourseInfo] = useState({})
+
+
   return (
     <div className="App">
+      <UserCourseInfo.Provider value={[courseInfo,setCourseInfo]} />
       <Router>
          <Switch>
            <Route exact path="/"> 
@@ -26,6 +36,9 @@ function App() {
              </Route>
              <Route path="/signIn"> 
                <SignIn/>
+             </Route>
+             <Route path="/books/:id"> 
+             <Book/>
              </Route>
              <Route path="/books"> 
              <Book/>
@@ -41,7 +54,9 @@ function App() {
              </Route>
          </Switch>
       </Router>
-     
+
+      <UserCourseInfo.Provider/>
+
     </div>
   );
 }

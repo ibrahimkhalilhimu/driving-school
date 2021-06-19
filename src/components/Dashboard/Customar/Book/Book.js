@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Book.css'
+import { useParams } from 'react-router-dom';
+import CourseData from '../../../Data/CourseData/CourseData';
+import { UserCourseInfo } from '../../../../App';
+
 const Book = () => {
+
+    let { id } = useParams();
+    const homeData =CourseData.find(data => data.id == id);
+    console.log(homeData);
+    
+
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -36,12 +46,13 @@ const Book = () => {
       <br/>
                     </div>
                     <div className="form-group">
-                    <input type="number" className="form-control " placeholder="Number" {...register("Number", {required: true})} />
+                    <input type="number" defaultValue={ homeData.price } className="form-control " placeholder="Number" {...register("Number", {required: true})} />
                     <br/>
                     </div>
                     <div className="form-group">
                     <input type="text" 
                         name="text" 
+                        defaultValue={homeData.title} 
                         className="form-control "
                         placeholder="Course Name"
                         {...register("Text", {required: true})}

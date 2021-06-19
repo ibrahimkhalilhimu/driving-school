@@ -1,11 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 
 const ServicesCard = ({data}) => {
-    const {img,id,title,price,description} = data
+    const {img,id,title,price,description} = data;
 
+    let history = useHistory();
+    function handleClick(id) {
+      history.push(`/books/${id}`);
+    }
+    
     return (
     
- <div className="col-md-4">
+ <div onClick={() =>handleClick(id)} className="col-md-4">
  <div className="card">
        <img src={img} className="rounded-circle mx-auto" alt="..."/>
    <div className="card-body">
