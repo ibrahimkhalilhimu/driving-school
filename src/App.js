@@ -16,21 +16,22 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 export const userContext = createContext()
-
+export const userCardInfo = createContext()
 function App() {
 
 const [courseInfo,setCourseInfo] = useState({})
-const [loggedInUser,setLoggedInUser] = useState({})
+const [loggedInUser,setLoggedInUser] = useState({success: false})
 
   return (
     <div className="App">
-      <userContext.Provider value={[courseInfo,setCourseInfo,loggedInUser,setLoggedInUser]} >
+      <userCardInfo.Provider value={[courseInfo,setCourseInfo]}>
+      <userContext.Provider value={[loggedInUser,setLoggedInUser]} >
       <Router>
          <Switch>
            <Route exact path="/"> 
              <Home/>
              </Route>
-             <Route path="/books/:_id"> 
+             <Route path="/books"> 
              <Book/>
              </Route>
              {/* <PrivateRoute path="/books"> 
@@ -55,7 +56,7 @@ const [loggedInUser,setLoggedInUser] = useState({})
       </Router>
 
       </userContext.Provider>
-
+      </userCardInfo.Provider>
     </div>
   );
 }

@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
+import { userCardInfo, userContext } from '../../../App';
 
 const ServicesCard = ({data}) => {
     const {img,id,title,price,description,_id} = data;
 
+// const [loggedInUser,setLoggedInUser] = useContext(userContext)
+const [courseInfo,setCourseInfo] = useContext(userCardInfo)
+
     let history = useHistory();
-    function handleClick(_id) {
-      history.push(`/books/${_id}`);
-    }
+    const handleUser=()=>{
+
+      history.push('/books')
     
+       }
+    const handleCardInfo = (img,title,price,description)=>{
+      setCourseInfo({img,title,price,description})
+    }
+
     return (
     
- <div onClick={() =>handleClick(_id)} className="col-md-4">
+ <div  onClick={()=> {handleCardInfo(img,title,price,description);
+  
+  handleUser()
+
+   
+   }}
+   className="col-md-4">
  <div className="card">
        <img src={img} className="rounded-circle mx-auto" alt="..."/>
    <div className="card-body">

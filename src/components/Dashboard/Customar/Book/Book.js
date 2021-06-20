@@ -3,18 +3,21 @@ import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Book.css'
 import { useParams } from 'react-router-dom';
-import { userContext } from '../../../../App';
+import { userCardInfo, userContext } from '../../../../App';
 
 const Book = () => {
-    const [courseInfo,setCourseInfo,loggedInUser,setLoggedInUser] = useContext(userContext)
-    let { _id } = useParams();
-useEffect(()=>{
-    fetch(`http://localhost:5000/course/${_id}`)
-    .then(res=>res.json())
-    .then(data=>setCourseInfo(data))
-},[])
+    const [courseInfo,setCourseInfo] = useContext(userCardInfo)
 
-console.log(loggedInUser.email);
+
+    console.log(courseInfo);
+//     let { _id } = useParams();
+// useEffect(()=>{
+//     fetch(`http://localhost:5000/course/${_id}`)
+//     .then(res=>res.json())
+//     .then(data=>setCourseInfo(data))
+// },[])
+
+// console.log(loggedInUser.email);
 
 
       
@@ -38,7 +41,7 @@ console.log(loggedInUser.email);
                         name="name" 
                         className="form-control "
                         placeholder="Your Name"
-                        defaultValue={loggedInUser.name}
+                        // defaultValue={loggedInUser.name}
                         {...register("Name", {required: true})}
                         />
                         <br/>
@@ -46,7 +49,7 @@ console.log(loggedInUser.email);
                     <div className="form-group">
                     <input type="email" 
                     name="email" 
-                    defaultValue={loggedInUser.email}
+                    // defaultValue={loggedInUser.email}
                     className="form-control "
                     placeholder="@gmail.com"
                    {...register("Email", {required: true, pattern: /^\S+@\S+$/i})}
