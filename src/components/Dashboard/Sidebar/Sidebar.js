@@ -60,17 +60,17 @@ const Sidebar = () => {
       {/* OffsNav */}
 
 
-      <div className="offcanvas offcanvas-start sidebar-nav mt-1" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div className="offcanvas offcanvas-start sidebar-nav mt-1" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         <div className="offcanvas-header">
           <h5 className="offcanvas-title ms-3 fw-bold" id="offcanvasExampleLabel">Dashboard</h5>
           <button type="button" className="btn-close text-reset closeBtn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
-          <nav class="navbar-dark">
-            <ul class="navbar-nav">
+          <nav className="navbar-dark">
+            <ul className="navbar-nav">
               <li>
-                <Link to="/profile" class="nav-link ">
-                  <span class="me-2">
+                <Link to="/profile" className="nav-link ">
+                  <span className="me-2">
                     <BiUserCircle
                       size="28px"
                     />
@@ -79,8 +79,8 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/books" class="nav-link ">
-                  <span class="me-2">
+                <Link to="/books" className="nav-link ">
+                  <span className="me-2">
                     <BiCart
                       size="28px"
                     />
@@ -89,8 +89,8 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/bookingList" class="nav-link ">
-                  <span class="me-2">
+                <Link to="/bookingList" className="nav-link ">
+                  <span className="me-2">
                     <BiListOl
                       size="28px"
                     />
@@ -99,8 +99,8 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/reviews" class="nav-link ">
-                  <span class="me-2">
+                <Link to="/reviews" className="nav-link ">
+                  <span className="me-2">
                     <BiChat
                       size="28px"
                     />
@@ -109,8 +109,8 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" class="nav-link ">
-                  <span class="me-2">
+                <a href="#" className="nav-link ">
+                  <span className="me-2">
                     <BiListOl
                       size="28px"
                     />
@@ -119,8 +119,8 @@ const Sidebar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link ">
-                  <span class="me-2">
+                <a href="#" className="nav-link ">
+                  <span className="me-2">
                     <BiPlus
                       size="28px"
                     />
@@ -129,8 +129,8 @@ const Sidebar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link ">
-                  <span class="me-2">
+                <a href="#" className="nav-link ">
+                  <span className="me-2">
                     <BiUserPlus
                       size="28px"
                     />
@@ -139,8 +139,8 @@ const Sidebar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link ">
-                  <span class="me-2">
+                <a href="#" className="nav-link ">
+                  <span className="me-2">
                     <BsGridFill
                       size="28px"
                     />
@@ -149,8 +149,8 @@ const Sidebar = () => {
                 </a>
               </li>
               <li>
-                <Link to="/" class="nav-link ">
-                  <span class="me-2">
+                <Link to="/" className="nav-link ">
+                  <span className="me-2">
                     <BiHomeAlt
                       size="28px"
                     />

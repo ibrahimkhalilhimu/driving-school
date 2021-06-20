@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import LogIn from './components/Auth/LogIn/LogIn';
 import SignIn from './components/Auth/SignIn/SignIn';
@@ -13,36 +12,30 @@ import Book from './components/Dashboard/Customar/Book/Book';
 import BookingList from './components/Dashboard/Customar/BookingList/BookingList';
 import Reviews from './components/Dashboard/Customar/Review/Reviews';
 import Profile from './components/Dashboard/Profile/Profile';
-import CourseData from './components/Data/CourseData/CourseData';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
-export const UserCourseInfo = createContext()
+export const userContext = createContext()
 
 function App() {
 
 const [courseInfo,setCourseInfo] = useState({})
-
+const [loggedInUser,setLoggedInUser] = useState({})
 
   return (
     <div className="App">
-      <UserCourseInfo.Provider value={[courseInfo,setCourseInfo]} >
+      <userContext.Provider value={[courseInfo,setCourseInfo,loggedInUser,setLoggedInUser]} >
       <Router>
          <Switch>
            <Route exact path="/"> 
              <Home/>
              </Route>
-             <Route path="/login"> 
-               <LogIn/>
-             </Route>
-             <Route path="/signIn"> 
-               <SignIn/>
-             </Route>
              <Route path="/books/:_id"> 
              <Book/>
              </Route>
-             <Route path="/books"> 
+             {/* <PrivateRoute path="/books"> 
              <Book/>
-             </Route>
+             </PrivateRoute> */}
              <Route path="/bookingList"> 
              <BookingList/>
              </Route>
@@ -52,10 +45,16 @@ const [courseInfo,setCourseInfo] = useState({})
              <Route path="/profile"> 
              <Profile/>
              </Route>
+             <Route path="/login"> 
+               <LogIn/>
+             </Route>
+             <Route path="/signIn"> 
+               <SignIn/>
+             </Route>
          </Switch>
       </Router>
 
-      </UserCourseInfo.Provider>
+      </userContext.Provider>
 
     </div>
   );

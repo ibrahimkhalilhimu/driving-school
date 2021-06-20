@@ -3,26 +3,18 @@ import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Book.css'
 import { useParams } from 'react-router-dom';
-import CourseData from '../../../Data/CourseData/CourseData';
-import { UserCourseInfo } from '../../../../App';
+import { userContext } from '../../../../App';
 
 const Book = () => {
-
+    const [courseInfo,setCourseInfo,loggedInUser,setLoggedInUser] = useContext(userContext)
     let { _id } = useParams();
-    console.log(_id);
-
-    // const homeData =CourseData.find(data => data._id == _id);
-    // console.log(homeData);
-
-    
-    const [courseInfo,setCourseInfo] = useContext(UserCourseInfo)
 useEffect(()=>{
     fetch(`http://localhost:5000/course/${_id}`)
     .then(res=>res.json())
     .then(data=>setCourseInfo(data))
 },[])
 
-console.log(courseInfo);
+console.log(loggedInUser.email);
 
 
       
@@ -46,16 +38,18 @@ console.log(courseInfo);
                         name="name" 
                         className="form-control "
                         placeholder="Your Name"
+                        defaultValue={loggedInUser.name}
                         {...register("Name", {required: true})}
                         />
                         <br/>
                     </div>
                     <div className="form-group">
                     <input type="email" 
-      name="email" 
-     className="form-control "
-      placeholder="@gmail.com"
-          {...register("Email", {required: true, pattern: /^\S+@\S+$/i})}
+                    name="email" 
+                    defaultValue={loggedInUser.email}
+                    className="form-control "
+                    placeholder="@gmail.com"
+                   {...register("Email", {required: true, pattern: /^\S+@\S+$/i})}
      />
       <br/>
                     </div>

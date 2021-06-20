@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 import { BsListCheck } from "react-icons/bs";
+import { userContext } from '../../../App';
 
 const Header = () => {
+  const [loggedInUser,setLoggedInUser] = useContext(userContext)
+
     return (
         <div className="header">
             <nav className="container navbar navbar-expand-lg">
@@ -35,7 +38,13 @@ const Header = () => {
 </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link login" to="/login">Login</Link>
+        {
+          loggedInUser.email? <Link className="nav-link" to="/">
+            <img src={loggedInUser.photoURL} alt="" />
+          </Link>:
+          <Link className="nav-link login" to="/login">Login</Link>
+        }
+      
       </li>
     </ul>
   </div>

@@ -6,8 +6,8 @@ const BookingList = () => {
     return (
         <div className="bookingList">
                 <Sidebar/>
-            <section class="pt-3">
-      <div class="container-fluid">
+            <section className="pt-3">
+      <div className="container-fluid">
       <div className="row">
           <div className="col-md-4">
           <div className="card">

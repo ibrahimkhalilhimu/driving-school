@@ -10,8 +10,8 @@ const Reviews = () => {
     return (
         <div className="reviews">
             <Sidebar/>
-            <section class=" pt-3">
-      <div class="container-fluid">
+            <section className=" pt-3">
+      <div className="container-fluid">
       <div className="row">
         <div className="col-md-12">
         <div className=" fromSection">

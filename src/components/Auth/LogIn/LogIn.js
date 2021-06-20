@@ -1,12 +1,60 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './LogIn.css'
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Header from '../../Home/Navbar/Header';
+import { userContext } from '../../../App';
+// import { googleBtn, initializeLoginInFrameWorker } from '../Firebase/LoggedInManager';
+import firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from '../Firebase/firebaseConfig';
 
 const notify = () => toast.success('Successfully toasted!');
+
 const LogIn = () => {
+
+  if(firebase.apps.length === 0){
+    firebase.initializeApp(firebaseConfig);
+}
+ 
+
+
+
+  const [loggedInUser,setLoggedInUser,courseInfo,setCourseInfo] = useContext(userContext)
+
+  let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+
+    // initializeLoginInFrameWorker()
+    const provider = new firebase.auth.GoogleAuthProvider();
+  const handleGoogle = () => {
+    
+    firebase.auth().signInWithPopup(provider)
+    .then(function(result) {
+
+        var {displayName,email,photoURL} = result.user;
+        const signInUser = {name:displayName,email,photoURL}
+        setLoggedInUser(signInUser)
+         history.replace(from);
+         console.log(signInUser);
+        
+        
+      })
+      .catch(function(error) {
+      
+        var errorCode = error.code;
+        var errorMessage = error.message;
+       
+        var email = error.email;
+       
+        console.log(errorMessage,errorCode,email);
+      });
+}
+
+
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -49,11 +97,13 @@ const LogIn = () => {
               </div>
             </div>
             <div className="text-center pt-3">
-               <button className="googleBtn ">
+               <button 
+               onClick={handleGoogle}
+               className="googleBtn ">
                    <span style={{marginRight:"auto"}}>
                    <img src="https://i.ibb.co/R0cy8Yn/Group-571.png" alt=""/>
                    </span>
-                    <span>Continue with Google</span> </button>
+                    <span className='text-dark'>Continue with Google</span> </button>
                </div>
             </div>
         </div>
