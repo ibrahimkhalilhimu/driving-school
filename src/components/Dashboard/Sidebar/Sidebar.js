@@ -79,7 +79,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" class="nav-link ">
+                <Link to="/books" class="nav-link ">
                   <span class="me-2">
                     <BiCart
                       size="28px"

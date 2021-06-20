@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Book.css'
@@ -8,22 +8,26 @@ import { UserCourseInfo } from '../../../../App';
 
 const Book = () => {
 
-    let { id } = useParams();
-    const homeData =CourseData.find(data => data.id == id);
-    console.log(homeData);
-    
-    const handleAdd =()=>{
-        fetch('http://localhost:5000/addCourses', {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json' 
-            },
-            body: JSON.stringify(CourseData),
-          
-          })
-    }
+    let { _id } = useParams();
+    console.log(_id);
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    // const homeData =CourseData.find(data => data._id == _id);
+    // console.log(homeData);
+
+    
+    const [courseInfo,setCourseInfo] = useContext(UserCourseInfo)
+useEffect(()=>{
+    fetch(`http://localhost:5000/course/${_id}`)
+    .then(res=>res.json())
+    .then(data=>setCourseInfo(data))
+},[])
+
+console.log(courseInfo);
+
+
+      
+
+      const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log(data);
     }
@@ -56,13 +60,13 @@ const Book = () => {
       <br/>
                     </div>
                     <div className="form-group">
-                    <input type="number" defaultValue={ homeData.price } className="form-control " placeholder="Number" {...register("Number", {required: true})} />
+                    <input type="number" defaultValue={courseInfo.price} className="form-control " placeholder="Number" {...register("Number", {required: true})} />
                     <br/>
                     </div>
                     <div className="form-group">
                     <input type="text" 
                         name="text" 
-                        defaultValue={homeData.title} 
+                        defaultValue={courseInfo.title}
                         className="form-control "
                         placeholder="Course Name"
                         {...register("Text", {required: true})}
@@ -76,7 +80,7 @@ const Book = () => {
                 </form>
      </div>
 
-     <button onClick={handleAdd} className="btn btn-danger">add product</button>
+
         </div>
     </div>
         </div>

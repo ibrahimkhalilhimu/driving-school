@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import CourseData from '../../Data/CourseData/CourseData';
+import React, { useEffect, useState } from 'react';
 import './Services.css'
 import ServicesCard from './ServicesCard';
 
 
 const Services = () => {
-    const [courseData,setCourseData] = useState(CourseData);
+    const [courseData,setCourseData] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/courses')
+        .then((response) => response.json())
+        .then((data) => setCourseData(data));
+    },[])
+    console.log(courseData);
     return (
         <div className='services'>
             <div className="container text-center">

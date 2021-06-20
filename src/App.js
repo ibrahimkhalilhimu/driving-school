@@ -1,3 +1,4 @@
+import { createContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home/Home';
 import {
@@ -14,7 +15,6 @@ import Reviews from './components/Dashboard/Customar/Review/Reviews';
 import Profile from './components/Dashboard/Profile/Profile';
 import CourseData from './components/Data/CourseData/CourseData';
 
-import { createContext, useState } from 'react';
 
 export const UserCourseInfo = createContext()
 
@@ -25,7 +25,7 @@ const [courseInfo,setCourseInfo] = useState({})
 
   return (
     <div className="App">
-      <UserCourseInfo.Provider value={[courseInfo,setCourseInfo]} />
+      <UserCourseInfo.Provider value={[courseInfo,setCourseInfo]} >
       <Router>
          <Switch>
            <Route exact path="/"> 
@@ -37,7 +37,7 @@ const [courseInfo,setCourseInfo] = useState({})
              <Route path="/signIn"> 
                <SignIn/>
              </Route>
-             <Route path="/books/:id"> 
+             <Route path="/books/:_id"> 
              <Book/>
              </Route>
              <Route path="/books"> 
@@ -55,7 +55,7 @@ const [courseInfo,setCourseInfo] = useState({})
          </Switch>
       </Router>
 
-      <UserCourseInfo.Provider/>
+      </UserCourseInfo.Provider>
 
     </div>
   );
