@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ReviewData from '../../Data/ReviewsData/ReviewsData';
+import React, { useEffect, useState } from 'react';
 import './Testimonial.css'
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css"
@@ -13,7 +12,16 @@ SwiperCore.use([Lazy,Autoplay,Keyboard, Pagination,Navigation]);
 
 const Testimonial = () => {
 
-    const [reviewsData,setReviewsData] = useState(ReviewData)
+    const [reviewsData,setReviewsData] = useState([])
+
+    useEffect(()=>{
+       fetch('http://localhost:5000/review')
+       .then(res => res.json())
+       .then(data=> 
+        setReviewsData(data))
+   },[])
+
+   console.log(reviewsData);
     return (
         <div className="testimonial" id="testimonial">
             <div className="container text-center">
@@ -53,14 +61,21 @@ const Testimonial = () => {
                                 }
                             }} className="mySwiper">
 
-
+{
+        reviewsData.length ===0 &&
+       <div className="text-center mt-5">
+          <div className="spinner-grow " role="status">
+        <span className="visually-hidden text-center">Loading...</span>
+      </div>
+       </div>
+    }
 
 
 {
             reviewsData.map(testimonial => {
                 return (
                     <SwiperSlide>
-                   <TestimonialCard {...testimonial}/>
+                   <TestimonialCard testimonial={testimonial}/>
                 </SwiperSlide>
     
    

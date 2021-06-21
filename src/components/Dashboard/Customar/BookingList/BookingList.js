@@ -19,7 +19,14 @@ console.log(order);
             <section className="pt-3">
       <div className="container-fluid">
       <div className="row">
-
+      {
+        order.length ===0 &&
+       <div className="text-center mt-5">
+          <div className="spinner-grow " role="status">
+        <span className="visually-hidden text-center">Loading...</span>
+      </div>
+       </div>
+    }
 {
   order.map(data=>
     <div className="col-md-6">
@@ -27,7 +34,7 @@ console.log(order);
       <div className="d-flex ">
       <img src={data.courseInfo.img} className="rounded-circle" alt="..."/>
       <div className="d-flex justify-content-end">
-        <p>Pending</p>
+        
       </div>
       </div>
 

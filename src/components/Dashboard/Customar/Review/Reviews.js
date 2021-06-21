@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Reviews.css'
-import ReviewData from '../../../Data/ReviewsData/ReviewsData';
+import { userContext } from '../../../../App';
+import swal from 'sweetalert'
+
 const Reviews = () => {
+     const [loggedInUser,setLoggedInUser] = useContext(userContext)
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log(data);
+        const newReview = {...loggedInUser,data}
+
+        fetch(`http://localhost:5000/addReview`,{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newReview),
+        })
+        .then(res=>res.json())
+        .then(data => {
+          if(data){
+            swal("Good job!", "Your Review Successfully!", "success");
+          }
+        })
+        .catch(error => {
+          console.error(error)
+        })
     }
 
-    const handleAdd =()=>{
-        fetch('http://localhost:5000/addReview', {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json' 
-            },
-            body: JSON.stringify(ReviewData),
-  
-          })
-    }
+   
   
 
 
@@ -35,6 +47,7 @@ const Reviews = () => {
                     <input type="text" 
                         name="name" 
                         className="form-control "
+                        defaultValue={loggedInUser.name}
                         placeholder="Your Name"
                         {...register("Name", {required: true})}
                         />
@@ -43,24 +56,19 @@ const Reviews = () => {
                  
                     <div className="form-group">
                     <input type="text" 
-                        name="text" 
+                        name="CompanyName" 
                         className="form-control "
                         placeholder="Company Name"
-                        {...register("Text", {required: true})}
+                        {...register("CompanyName", {required: true})}
                         />
                          <br/>
                     </div>
                     <div className="form-group">
-                    <input type="number" 
-                        name="number" 
-                        className="form-control "
-                        placeholder="Rating"
-                        {...register("Text", {required: true})}
-                        />
-                         <br/>
+                    <input type="number" className="form-control" placeholder="Rating Star" {...register("Number", { valueAsNumber: true,})} />
+                    <br/>
                     </div>
                     <div className="form-group">
-                    <textarea style={{height:"120px"}} type="text"  {...register("Name", {required: true})} name="description" placeholder="Description" cols="30px" rows="10px" className="form-control" />
+                    <textarea style={{height:"120px"}} type="text"  {...register("description", {required: true})} name="description" placeholder="Description" cols="30px" rows="10px" className="form-control" />
                          <br/>
                     </div>
 
@@ -70,7 +78,7 @@ const Reviews = () => {
                 </form>
      </div>
         </div>
-        <button onClick={handleAdd} className="btn btn-danger">add product</button>
+    
     </div>
         </div>
 </section>

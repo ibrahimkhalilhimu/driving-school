@@ -40,9 +40,9 @@ const [loggedInUser,setLoggedInUser] = useState({success: false})
              <PrivateRoute path="/bookingList"> 
              <BookingList/>
              </PrivateRoute>
-             <PrivateRoute path="/reviews"> 
+             <Route path="/reviews"> 
              <Reviews/>
-             </PrivateRoute>
+             </Route>
              <PrivateRoute path="/profile"> 
              <Profile/>
              </PrivateRoute>

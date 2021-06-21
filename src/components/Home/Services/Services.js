@@ -18,6 +18,14 @@ const Services = () => {
                 <div className="row">
     {/* <div className="col-md-6"> */}
     {
+        courseData.length ===0 &&
+       <div className="text-center mt-5">
+          <div className="spinner-grow " role="status">
+        <span className="visually-hidden text-center">Loading...</span>
+      </div>
+       </div>
+    }
+    {
             courseData.map(data => <ServicesCard data={data} key={data.id}></ServicesCard>) 
 
             }
