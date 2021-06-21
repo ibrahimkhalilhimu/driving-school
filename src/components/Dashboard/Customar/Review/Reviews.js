@@ -22,7 +22,7 @@ const Reviews = () => {
         .then(res=>res.json())
         .then(data => {
           if(data){
-            swal("Good job!", "Your Review Successfully!", "success");
+            swal("Review Successfully!", "Your Review Successfully!", "success");
           }
         })
         .catch(error => {

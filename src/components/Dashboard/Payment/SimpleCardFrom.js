@@ -3,7 +3,7 @@ import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import swal from 'sweetalert'
 
 
-const SimpleCardFrom = () => {
+const SimpleCardFrom = ({handlePayment}) => {
 
 
     const stripe = useStripe();
@@ -33,7 +33,8 @@ const SimpleCardFrom = () => {
       if (error) {
         swal("Failed!", error.message, "error", { dangerMode: true });
       } else {
-        swal("Good job!", "Your Payment Successfully!", "success");
+        swal("Payment Successfully", "Your Payment Successfully!", "success");
+        handlePayment(paymentMethod.id)
       }
     };
   

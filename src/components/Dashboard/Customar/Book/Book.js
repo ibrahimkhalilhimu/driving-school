@@ -10,31 +10,33 @@ import Payment from '../../Payment/Payment';
 const Book = () => {
     const [courseInfo,setCourseInfo] = useContext(userCardInfo)
     const [loggedInUser,setLoggedInUser] = useContext(userContext)
-
+    const [data,setData] = useState(null)
       const { register, handleSubmit, watch, errors } = useForm();
      
     const onSubmit = data => {
-      const newOrder = {...loggedInUser,courseInfo,data}
-      fetch(`http://localhost:5000/addOrder`,{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newOrder),
-      })
-      .then(res=>res.json())
-      .then(data => {
-        if(data){
-          swal("Good job!", "Your Payment Successfully!", "success");
-        }
-      })
-      .catch(error => {
-        console.error(error)
-      })
+      setData(data)
     }
 
 
-
+const handlePayment = (paymentId) => {
+  const newOrder = {...loggedInUser,courseInfo,data,paymentId}
+  fetch(`http://localhost:5000/addOrder`,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newOrder),
+  })
+  .then(res=>res.json())
+  .then(data => {
+    if(data){
+     console.log(data);
+    }
+  })
+  .catch(error => {
+    console.error(error)
+  })
+}
 
 
     return (
@@ -45,7 +47,7 @@ const Book = () => {
       <div class="container-fluid ">
     <div className="row">
         <div className="col-md-12">
-        <div className="fromSection">
+        <div style={{display: data ? 'none': 'block'}} className="fromSection">
      <form className="" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group pt-5">
                     <input type="text" 
@@ -87,10 +89,14 @@ const Book = () => {
                     </div>
                 </form>
                 <br/>
-                <Payment/> 
+               
+               
      </div>
 
-
+     <div style={{display: data ? 'block': 'none'}} className="fromSection">
+                  <h2 className="text-danger">Payment</h2>
+                <Payment handlePayment={handlePayment}/> 
+                </div>
         </div>
     </div>
         </div>
