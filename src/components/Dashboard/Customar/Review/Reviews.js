@@ -2,11 +2,26 @@ import React from 'react';
 import Sidebar from '../../Sidebar/Sidebar';
 import { useForm } from "react-hook-form";
 import './Reviews.css'
+import ReviewData from '../../../Data/ReviewsData/ReviewsData';
 const Reviews = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
         console.log(data);
     }
+
+    const handleAdd =()=>{
+        fetch('http://localhost:5000/addReview', {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json' 
+            },
+            body: JSON.stringify(ReviewData),
+  
+          })
+    }
+  
+
+
     return (
         <div className="reviews">
             <Sidebar/>
@@ -25,11 +40,21 @@ const Reviews = () => {
                         />
                         <br/>
                     </div>
+                 
                     <div className="form-group">
                     <input type="text" 
                         name="text" 
                         className="form-control "
                         placeholder="Company Name"
+                        {...register("Text", {required: true})}
+                        />
+                         <br/>
+                    </div>
+                    <div className="form-group">
+                    <input type="number" 
+                        name="number" 
+                        className="form-control "
+                        placeholder="Rating"
                         {...register("Text", {required: true})}
                         />
                          <br/>
@@ -45,6 +70,7 @@ const Reviews = () => {
                 </form>
      </div>
         </div>
+        <button onClick={handleAdd} className="btn btn-danger">add product</button>
     </div>
         </div>
 </section>

@@ -33,3 +33,8 @@
   letter-spacing: 0.396px;
   color: #111430;
 }
+.product_rating {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}

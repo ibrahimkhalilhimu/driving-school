@@ -29,12 +29,14 @@ const LogIn = () => {
 
 
     // initializeLoginInFrameWorker()
-    const provider = new firebase.auth.GoogleAuthProvider();
-  const handleGoogle = () => {
     
+   
+  const handleGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const loading = toast.loading('Please wait...');
     firebase.auth().signInWithPopup(provider)
     .then(function(result) {
-
+      toast.dismiss(loading);
         var {displayName,email,photoURL} = result.user;
         const signInUser = {name:displayName,email,photoURL}
         setLoggedInUser(signInUser)
