@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ImageGrid from '../../Dashboard/Loader/ImageGrid/ImageGrid';
 import './Services.css'
 import ServicesCard from './ServicesCard';
 
@@ -19,11 +20,7 @@ const Services = () => {
     {/* <div className="col-md-6"> */}
     {
         courseData.length ===0 &&
-       <div className="text-center mt-5">
-          <div className="spinner-grow " role="status">
-        <span className="visually-hidden text-center">Loading...</span>
-      </div>
-       </div>
+     <ImageGrid/>
     }
     {
             courseData.map(data => <ServicesCard data={data} key={data.id}></ServicesCard>) 

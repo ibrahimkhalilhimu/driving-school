@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SignIn.css'
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../../Home/Navbar/Header';
+import { createUserWithEmailAndPassword, initializeLoginInFrameWorker } from '../Firebase/LoggedInManager';
+import { userContext } from '../../../App';
+
 
 const notify = () => toast.success('Successfully toasted!');
 
 const SignIn = () => {
+const [loggedInUser,setLoggedInUser] = useContext(userContext)
+let history = useHistory();
+let location = useLocation();
+let { from } = location.state || { from: { pathname: "/" } };
     const { register, handleSubmit, watch } = useForm();
+
+    initializeLoginInFrameWorker()
+
     const onSubmit = data => {
-        console.log(data);
+      const loading = toast.loading('Please wait...');
+      const {name, password,email} = data;
+      createUserWithEmailAndPassword(name,email,password)
+      .then(res=>{
+        toast.dismiss(loading);
+        handleResponse(res,true);
+        // setLoggedInUser(res)
+        // toast.success('Successfully toasted!');
+        // history.replace(from)
+       }).catch(err => {
+        toast.dismiss(loading);
+        toast.error(err.message)
+    });
+    }
+
+    const handleResponse = (res, redirect) => {
+      setLoggedInUser(res)
+      if (redirect) {
+        history.replace(from);
+      }
+  
     }
     return (
         <div className="signIn"> 
@@ -29,19 +59,19 @@ const SignIn = () => {
     name="email" 
     className="form-control input"
     placeholder="@gmail.com"
-    {...register("Email", {required: true, pattern: /^\S+@\S+$/i})}
+    {...register("email", {required: true,})}
      />
     <br/>
   </div>
   <div className="form-group">
-    <input type="password" name="password" className="form-control input"placeholder="Password" {...register("Password", {required: true})} />
+    <input type="password" name="password" className="form-control input"placeholder="Password" {...register("password", {required: true})} />
     <br/>
   </div>
   <div className="form-group">
-    <input type="password" name="Confirm password" className="form-control input"placeholder="Confirm password" {...register("Confirm password", {required: true})} />
+    <input type="password" name="Confirm_password" className="form-control input"placeholder="Confirm password" {...register("Confirm_password", {validate: (value) => value === watch('password') })} />
   </div>
 <div className="d-grid gap-2">
-<button onClick={notify} style={{backgroundColor:"#7b1798"}} className="btn btn-block text-white mt-3" type='submit'>SignIn</button>
+<button style={{backgroundColor:"#7b1798"}} className="btn btn-block text-white mt-3" type='submit'>SignIn</button>
   <Toaster />
 </div>
   <h6 className="text-center pt-2"><Link style={{color:"#7b1798"}} to="/login" >Already have an account</Link></h6>

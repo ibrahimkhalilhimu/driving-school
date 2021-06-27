@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TestimonialCard = ({testimonial}) => {
-    console.log(testimonial);
+    
     // const {img,photoURL,name,description,rating,title} = testimonial;
     // const {Number,CompanyName} = testimonial.data
     return (

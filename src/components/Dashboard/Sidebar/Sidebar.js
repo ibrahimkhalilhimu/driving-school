@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Sidebar.css'
 import { BiUserCircle, BiCart, BiListOl, BiChat, BiPlus, BiUserPlus, BiHomeAlt } from "react-icons/bi";
 import { BsGridFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { userContext } from '../../../App';
 const Sidebar = () => {
 
+  const [loggedInUser,setLoggedInUser, isAdmin,setIsAdmin]= useContext(userContext)
+ 
+;useEffect(()=>{
+      
+  fetch('http://localhost:5000/isAdmin',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({email:loggedInUser.email})
+  })
+  .then(res => res.json())
+  .then(data=>{setIsAdmin(data)})
+},[])
+console.log(isAdmin)
 
-
-  console.log(window.location.pathname.includes("books"));
+  // console.log(window.location.pathname.includes("books"));
 
   return (
     <div className="sidebar">
-      <nav className="navbar navbar-expand-lg navbar-light bg-white ">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div className="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
             <span className="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
           </button>
           {window.location.pathname === '/profile' &&
-            <Link className="navbar-brand me-auto ps-3 text-danger" to="/profile">
+            <Link className="navbar-brand me-auto ps-3 text-danger " to="/profile">
               Profile
             </Link>
 
@@ -37,8 +50,26 @@ const Sidebar = () => {
 
 
           {window.location.pathname === '/bookingList' &&
-            <Link className="navbar-brand me-auto ps-3 text-danger" to="/bookingList">
+            <Link className="navbar-brand me-auto ps-3 text-danger " to="/bookingList">
               Booking List
+            </Link>
+
+          }
+            {window.location.pathname === '/makeAdmin' &&
+            <Link className="navbar-brand me-auto ps-3 text-danger" to="/makeAdmin">
+             Make Admin
+            </Link>
+
+          }
+            {window.location.pathname === '/orderList' &&
+            <Link className="navbar-brand me-auto ps-3 text-danger" to="/orderList">
+             Order List
+            </Link>
+
+          }
+           {window.location.pathname === '/manageServices' &&
+            <Link className="navbar-brand me-auto ps-3 text-danger" to="/manageServices">
+            Manage Services
             </Link>
 
           }
@@ -68,57 +99,35 @@ const Sidebar = () => {
         <div className="offcanvas-body">
           <nav className="navbar-dark">
             <ul className="navbar-nav">
-              <li>
-                <Link to="/profile" className="nav-link ">
-                  <span className="me-2">
-                    <BiUserCircle
-                      size="28px"
-                    />
-                  </span>
-                  <span>Profile</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/books" className="nav-link ">
-                  <span className="me-2">
-                    <BiCart
-                      size="28px"
-                    />
-                  </span>
-                  <span>Book</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/bookingList" className="nav-link ">
-                  <span className="me-2">
-                    <BiListOl
-                      size="28px"
-                    />
-                  </span>
-                  <span>Booking List</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/reviews" className="nav-link ">
-                  <span className="me-2">
-                    <BiChat
-                      size="28px"
-                    />
-                  </span>
-                  <span>Reviews</span>
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="nav-link ">
-                  <span className="me-2">
-                    <BiListOl
-                      size="28px"
-                    />
-                  </span>
-                  <span>Order List</span>
-                </a>
-              </li>
-              <li>
+            <li>
+            <Link to="/profile" className="nav-link ">
+              <span className="me-2">
+                <BiUserCircle
+                  size="28px"
+                />
+              </span>
+              <span>Profile</span>
+            </Link>
+          </li>
+          
+            
+          {
+            isAdmin ?
+            <>
+ <li>
+              <Link to="/orderList" className="nav-link ">
+                <span className="me-2">
+                  <BiListOl
+                    size="28px"
+                  />
+                </span>
+                <span>Order List</span>
+              </Link>
+            </li>
+             
+            
+         
+                <li>
                 <a href="#" className="nav-link ">
                   <span className="me-2">
                     <BiPlus
@@ -128,26 +137,68 @@ const Sidebar = () => {
                   <span>Add Service</span>
                 </a>
               </li>
+        
               <li>
-                <a href="#" className="nav-link ">
+              <Link to="/makeAdmin" className="nav-link ">
+                <span className="me-2">
+                  <BiUserPlus
+                    size="28px"
+                  />
+                </span>
+                <span>Make Admin</span>
+              </Link>
+            </li>
+         
+              <li>
+              <Link to="/manageServices" className="nav-link ">
+                <span className="me-2">
+                  <BsGridFill
+                    size="28px"
+                  />
+                </span>
+                <span>Manage Services</span>
+              </Link>
+            </li>
+            </>:
+            <>
+             <li>
+           <Link to="/books" className="nav-link ">
+             <span className="me-2">
+               <BiCart
+                 size="28px"
+               />
+             </span>
+             <span>Book</span>
+           </Link>
+         </li>
+       
+              
+            <li>
+           <Link to="/bookingList" className="nav-link ">
+             <span className="me-2">
+               <BiListOl
+                 size="28px"
+               />
+             </span>
+             <span>Booking List</span>
+           </Link>
+         </li>
+        
+             <li>
+                <Link to="/reviews" className="nav-link ">
                   <span className="me-2">
-                    <BiUserPlus
+                    <BiChat
                       size="28px"
                     />
                   </span>
-                  <span>Make Admin</span>
-                </a>
+                  <span>Reviews</span>
+                </Link>
               </li>
-              <li>
-                <a href="#" className="nav-link ">
-                  <span className="me-2">
-                    <BsGridFill
-                      size="28px"
-                    />
-                  </span>
-                  <span>Manage Services</span>
-                </a>
-              </li>
+            </>
+          }
+
+
+             
               <li>
                 <Link to="/" className="nav-link ">
                   <span className="me-2">

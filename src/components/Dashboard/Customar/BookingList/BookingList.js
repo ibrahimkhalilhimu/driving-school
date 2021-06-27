@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../../../../App';
+import EventsLoader from '../../Loader/EventsLoader/EventsLoader';
 import Sidebar from '../../Sidebar/Sidebar';
 import './BookingList.css'
 
@@ -16,16 +17,12 @@ console.log(order);
     return (
         <div className="bookingList">
                 <Sidebar/>
-            <section className="pt-3">
+            <section className="mt-5 pt-4">
       <div className="container-fluid">
       <div className="row">
       {
         order.length ===0 &&
-       <div className="text-center mt-5">
-          <div className="spinner-grow " role="status">
-        <span className="visually-hidden text-center">Loading...</span>
-      </div>
-       </div>
+      <EventsLoader/>
     }
 {
   order.map(data=>
@@ -46,6 +43,7 @@ console.log(order);
     </div>
   )
 }
+
 
 
           

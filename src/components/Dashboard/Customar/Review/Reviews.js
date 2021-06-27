@@ -37,7 +37,7 @@ const Reviews = () => {
     return (
         <div className="reviews">
             <Sidebar/>
-            <section className=" pt-3">
+            <section className=" mt-5 pt-4">
       <div className="container-fluid">
       <div className="row">
         <div className="col-md-12">

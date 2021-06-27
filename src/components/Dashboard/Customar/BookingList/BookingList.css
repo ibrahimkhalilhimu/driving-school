@@ -4,7 +4,7 @@
   height: 100vh;
 }
 .bookingList .card {
-  height: 300px;
+  height: 350px;
   background: #ffffff;
   border-radius: 20px;
   background: #ffffff;
@@ -16,4 +16,9 @@
   width: 100px;
   height: 100px;
   margin: 10px;
+}
+@media only screen and (max-width: 767px) {
+  .bookingList {
+    height: 100%;
+  }
 }

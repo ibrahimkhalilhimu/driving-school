@@ -59,7 +59,7 @@ const SplitForm = ({handlePayment}) => {
         swal("Failed!", payload.error.message, "error", { dangerMode: true });
       } else {
         swal("Payment Successfully", "Your Payment Successfully!", "success");
-        handlePayment(payload.id)
+        handlePayment(payload)
       }
   };
 

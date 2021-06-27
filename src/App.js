@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home/Home';
 import {
@@ -13,6 +13,9 @@ import BookingList from './components/Dashboard/Customar/BookingList/BookingList
 import Reviews from './components/Dashboard/Customar/Review/Reviews';
 import Profile from './components/Dashboard/Profile/Profile';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import MakeAdmin from './components/Dashboard/Admin/MakeAdmin/MakeAdmin';
+import OrderList from './components/Dashboard/Admin/OrderList/OrderList';
+import ManageServices from './components/Dashboard/Admin/ManageServices/ManageServices';
 
 
 export const userContext = createContext()
@@ -21,19 +24,24 @@ function App() {
 
 const [courseInfo,setCourseInfo] = useState({})
 const [loggedInUser,setLoggedInUser] = useState({success: false})
+const [isAdmin,setIsAdmin] = useState(false)
+
+
 
   return (
+
+
     <div className="App">
       <userCardInfo.Provider value={[courseInfo,setCourseInfo]}>
-      <userContext.Provider value={[loggedInUser,setLoggedInUser]} >
+      <userContext.Provider value={[loggedInUser,setLoggedInUser,isAdmin,setIsAdmin]} >
       <Router>
          <Switch>
            <Route exact path="/"> 
              <Home/>
              </Route>
-             <Route path="/books"> 
+             <PrivateRoute path="/books"> 
              <Book/>
-             </Route>
+             </PrivateRoute>
              {/* <PrivateRoute path="/books"> 
              <Book/>
              </PrivateRoute> */}
@@ -46,6 +54,15 @@ const [loggedInUser,setLoggedInUser] = useState({success: false})
              <PrivateRoute path="/profile"> 
              <Profile/>
              </PrivateRoute>
+             <Route path="/makeAdmin"> 
+             <MakeAdmin/>
+             </Route>
+             <Route path="/orderList"> 
+             <OrderList/>
+             </Route>
+             <Route path="/manageServices"> 
+             <ManageServices/>
+             </Route>
              <Route path="/login"> 
                <LogIn/>
              </Route>

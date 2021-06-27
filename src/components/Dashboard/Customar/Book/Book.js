@@ -43,7 +43,7 @@ const handlePayment = (paymentId) => {
         <div className="bookPage">
             <Sidebar/>
             
-<section class="pt-3">
+<section class=" mt-5 pt-4">
       <div class="container-fluid ">
     <div className="row">
         <div className="col-md-12">
@@ -54,7 +54,7 @@ const handlePayment = (paymentId) => {
                         name="name" 
                         className="form-control "
                         placeholder="Your Name"
-                        defaultValue={loggedInUser.name}
+                        defaultValue={loggedInUser.name || loggedInUser.displayName}
                         {...register("Name", {required: true})}
                         />
                         <br/>
