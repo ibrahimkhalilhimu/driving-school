@@ -29,7 +29,11 @@ console.log(order);
     <div className="col-md-6">
     <div className="card">
       <div className="d-flex ">
-      <img src={data.courseInfo.img} className="rounded-circle" alt="..."/>
+      {
+     data.courseInfo.image ? <img src={`data:image/png;base64,${data.courseInfo.image.img}`} className="rounded-circle" alt="..."/>:
+     <img src={data.courseInfo.img} className="rounded-circle" alt="..."/>
+   }
+      {/* <img src={data.courseInfo.img} className="rounded-circle" alt="..."/> */}
       <div className="d-flex justify-content-end">
         
       </div>

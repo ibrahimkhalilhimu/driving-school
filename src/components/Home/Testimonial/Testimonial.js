@@ -74,10 +74,11 @@ const Testimonial = () => {
 {
             reviewsData.map(testimonial => {
                 return (
-                    <SwiperSlide>
-                   <TestimonialCard testimonial={testimonial}/>
+                    <div key={testimonial._id}>
+                    <SwiperSlide >
+                   <TestimonialCard key={testimonial._id} testimonial={testimonial} />
                 </SwiperSlide>
-    
+                 </div>
    
               
               )

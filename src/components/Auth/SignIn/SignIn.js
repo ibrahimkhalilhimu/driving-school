@@ -24,6 +24,7 @@ let { from } = location.state || { from: { pathname: "/" } };
       const {name, password,email} = data;
       createUserWithEmailAndPassword(name,email,password)
       .then(res=>{
+        res.name = name;
         toast.dismiss(loading);
         handleResponse(res,true);
         // setLoggedInUser(res)

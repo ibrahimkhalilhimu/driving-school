@@ -26,7 +26,7 @@ console.log(isAdmin)
     <div className="sidebar">
       <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div className="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+          <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
             <span className="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
           </button>
           {window.location.pathname === '/profile' &&
@@ -73,6 +73,12 @@ console.log(isAdmin)
             </Link>
 
           }
+            {window.location.pathname === '/addService' &&
+            <Link className="navbar-brand me-auto ps-3 text-danger" to="/addService">
+           ADD Service
+            </Link>
+
+          }
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -100,7 +106,7 @@ console.log(isAdmin)
           <nav className="navbar-dark">
             <ul className="navbar-nav">
             <li>
-            <Link to="/profile" className="nav-link ">
+            <Link to="/profile" className="nav-link">
               <span className="me-2">
                 <BiUserCircle
                   size="28px"
@@ -128,14 +134,14 @@ console.log(isAdmin)
             
          
                 <li>
-                <a href="#" className="nav-link ">
+                <Link to="/addService" className="nav-link ">
                   <span className="me-2">
                     <BiPlus
                       size="28px"
                     />
                   </span>
                   <span>Add Service</span>
-                </a>
+                </Link>
               </li>
         
               <li>

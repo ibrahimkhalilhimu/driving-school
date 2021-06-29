@@ -5,7 +5,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Header from '../../Home/Navbar/Header';
 import { userContext } from '../../../App';
-import { googleBtn, initializeLoginInFrameWorker, signInWithEmailAndPassword } from '../Firebase/LoggedInManager';
+import { googleBtn, handleSignOut, initializeLoginInFrameWorker, signInWithEmailAndPassword } from '../Firebase/LoggedInManager';
 // import firebase from "firebase/app";
 // import "firebase/auth";
 // import firebaseConfig from '../Firebase/firebaseConfig';
@@ -21,8 +21,8 @@ const LogIn = () => {
 
 
 
-  const [loggedInUser, setLoggedInUser, courseInfo, setCourseInfo] = useContext(userContext)
-  const [user, setUser] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useContext(userContext)
+  // const [user, setUser] = useState(false);
 
 
   let history = useHistory();
@@ -48,8 +48,9 @@ const LogIn = () => {
       .then(res => {
         toast.dismiss(loading);
         // handleResponse(res)
-        setUser(res)
+        // setUser(res)
         setLoggedInUser(res)
+        console.log(res);
         history.replace(from);
       }).catch(err => {
         toast.dismiss(loading);
@@ -57,10 +58,16 @@ const LogIn = () => {
       })
 
   }
+  const signOut =()=>{
+    handleSignOut()
+    .then(res =>{
+      handleResponse(res,false)
+    })
+  }
 
 
   const handleResponse = (res, redirect) => {
-    setUser(res)
+    // setUser(res)
     setLoggedInUser(res)
     if (redirect) {
       history.replace(from);

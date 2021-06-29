@@ -15,11 +15,34 @@ const Book = () => {
      
     const onSubmit = data => {
       setData(data)
+      // const newOrder = {...loggedInUser, courseInfo,data }
+      // console.log(newOrder);
+      // fetch(`http://localhost:5000/addOrder`,{
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(newOrder)
+      
+        
+
+      // })
+      // .then(res=>res.json())
+      // .then(data => {
+      //   if(data){
+      //    console.log(data);
+      //   }
+      // })
+      // .catch(errors => {
+      //   console.error(errors)
+      // })
     }
 
 
 const handlePayment = (paymentId) => {
-  const newOrder = {...loggedInUser,courseInfo,data,paymentId}
+  const newOrder = {...loggedInUser,courseInfo,
+    data,
+    paymentId}
   fetch(`http://localhost:5000/addOrder`,{
     method: 'POST',
     headers: {
@@ -43,8 +66,8 @@ const handlePayment = (paymentId) => {
         <div className="bookPage">
             <Sidebar/>
             
-<section class=" mt-5 pt-4">
-      <div class="container-fluid ">
+<section className=" mt-5 pt-4">
+      <div className="container-fluid ">
     <div className="row">
         <div className="col-md-12">
         <div style={{display: data ? 'none': 'block'}} className="fromSection">

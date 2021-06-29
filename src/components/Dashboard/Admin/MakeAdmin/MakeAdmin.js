@@ -26,7 +26,7 @@ const MakeAdmin = () => {
         <div className="makeAdmin">
             <Sidebar/>
             <section className="mt-5 p-4">
-            <div className="fromSection">
+            <div className="fromSection mx-auto">
             <form className="" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group mt-5">
                         <h4>Email</h4>

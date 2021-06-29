@@ -5,12 +5,13 @@ import './Profile.css'
 const Profile = () => {
 
   const [loggedInUser,setLoggedInUser] = useContext(userContext)
+  console.log(loggedInUser);
 
     return (
         <div className="profile">
            <Sidebar/>
-            <section class=" mt-5 pt-4">
-      <div class="container-fluid">
+            <section className=" mt-5 pt-4">
+      <div className="container-fluid">
      
           <div className="row ">
               <div className="col-md-6 d-grid gap-4 mx-auto">
@@ -20,7 +21,7 @@ const Profile = () => {
     <h4 className="card-title">{loggedInUser.name || loggedInUser.displayName}</h4>
     <p className="card-text">{loggedInUser.email}</p>
     <div className="d-grid gap-2 col-6 mx-auto">
-  <button className="btn btn-danger" type="button">SignOut</button>
+  <button onClick={()=>setLoggedInUser({})} className="btn btn-danger" type="button">SignOut</button>
 </div>
   </div>
 </div>

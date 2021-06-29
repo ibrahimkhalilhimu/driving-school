@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home/Home';
 import {
@@ -16,6 +16,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MakeAdmin from './components/Dashboard/Admin/MakeAdmin/MakeAdmin';
 import OrderList from './components/Dashboard/Admin/OrderList/OrderList';
 import ManageServices from './components/Dashboard/Admin/ManageServices/ManageServices';
+import AddService from './components/Dashboard/Admin/AddService/AddService';
 
 
 export const userContext = createContext()
@@ -62,6 +63,9 @@ const [isAdmin,setIsAdmin] = useState(false)
              </Route>
              <Route path="/manageServices"> 
              <ManageServices/>
+             </Route>
+             <Route path="/addService"> 
+             <AddService/>
              </Route>
              <Route path="/login"> 
                <LogIn/>

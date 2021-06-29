@@ -47,11 +47,11 @@ const [loader,setLoader] = useState(true)
         <div className="orderList">
             <Sidebar></Sidebar>
             <section className=" mt-5 p-4">
-    <div className="fromSection  table-responsive">
+    <div className="fromSection  table-responsive w-100">
  {
    loader? <TableLoader/>: 
    <table className="table  table-hover table-borderless">
-   <thead class="table-light">
+   <thead className="table-light">
      <tr>
        <th scope="col">Name</th>
        <th scope="col">Email ID</th>

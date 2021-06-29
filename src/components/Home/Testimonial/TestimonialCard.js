@@ -5,9 +5,9 @@ const TestimonialCard = ({testimonial}) => {
     // const {img,photoURL,name,description,rating,title} = testimonial;
     // const {Number,CompanyName} = testimonial.data
     return (
-        <div className="">
+        <div key={testimonial.id}>
             <div className="card text-center">
-       <img src={testimonial.img || testimonial.photoURL} className="rounded-circle mx-auto" alt="..."/>
+       <img src={testimonial.img || testimonial.photoURL || "https://i.ibb.co/2Kt6fqv/images.png"} className="rounded-circle mx-auto" alt="..."/>
    <div className="card-body">
        <h3 className="card-title">{testimonial.name || testimonial.data.Name}</h3>
        <small>{testimonial.title || testimonial.data.CompanyName }</small>

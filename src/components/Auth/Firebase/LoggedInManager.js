@@ -32,7 +32,7 @@ export const googleBtn = () => {
 
 
 export const createUserWithEmailAndPassword = (name, email, password) => {
-  return firebase.auth().createUserWithEmailAndPassword(email, password)
+  return firebase.auth().createUserWithEmailAndPassword( email, password)
     .then(res => {
       // const newUserInfo = res.user
       // console.log(res.user);
@@ -70,7 +70,8 @@ export const signInWithEmailAndPassword = (email, password) => {
 
 
 const handleResponse =(res)=>{
-  const newUserInfo = res.user;
+  const { displayName, email } = res.user;
+  const newUserInfo ={ name: displayName, email}
       newUserInfo.error = '';
       newUserInfo.success = true
       return newUserInfo;
@@ -90,3 +91,21 @@ const updateUserName = name => {
     console.log(error)
   });
 }
+
+export const handleSignOut = ()=>{
+  return  firebase.auth().signOut()
+    .then(res=>{
+      const singOutUser ={
+        displayName:'', 
+        email:'',
+        error:'',
+        success:false
+
+      }
+      
+      return singOutUser;
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
