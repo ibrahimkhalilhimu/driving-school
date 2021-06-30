@@ -10,7 +10,7 @@ const Sidebar = () => {
  
 ;useEffect(()=>{
       
-  fetch('http://localhost:5000/isAdmin',{
+  fetch('https://glacial-peak-56892.herokuapp.com/isAdmin',{
       method:'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify({email:loggedInUser.email})
@@ -68,7 +68,7 @@ console.log(isAdmin)
 
           }
            {window.location.pathname === '/manageServices' &&
-            <Link className="navbar-brand me-auto ps-3 text-danger" to="/manageServices">
+            <Link className="navbar-brand me-auto ps-3 text-danger fs-4" to="/manageServices">
             Manage Services
             </Link>
 
@@ -86,7 +86,7 @@ console.log(isAdmin)
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link" href="">
-                  {/* <img className="img-fluid rounded-circle" src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" /> */}
+                  <img className="img-fluid rounded-circle" src={loggedInUser.photoURL || "https://i.ibb.co/2Kt6fqv/images.png"} alt="" />
                 </a>
               </li>
             </ul>

@@ -29,7 +29,7 @@ const AddService = () => {
         formData.append('title', info.title)
         formData.append('description', info.description)
         formData.append('price', info.price)
-        fetch('http://localhost:5000/addCourses', {
+        fetch('https://glacial-peak-56892.herokuapp.com/addCourses', {
             method: 'POST',
             body: formData
           })

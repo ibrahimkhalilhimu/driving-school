@@ -49,24 +49,24 @@ const [isAdmin,setIsAdmin] = useState(false)
              <PrivateRoute path="/bookingList"> 
              <BookingList/>
              </PrivateRoute>
-             <Route path="/reviews"> 
+             <PrivateRoute path="/reviews"> 
              <Reviews/>
-             </Route>
+             </PrivateRoute>
              <PrivateRoute path="/profile"> 
              <Profile/>
              </PrivateRoute>
-             <Route path="/makeAdmin"> 
+             <PrivateRoute path="/makeAdmin"> 
              <MakeAdmin/>
-             </Route>
-             <Route path="/orderList"> 
+             </PrivateRoute>
+             <PrivateRoute path="/orderList"> 
              <OrderList/>
-             </Route>
-             <Route path="/manageServices"> 
+             </PrivateRoute>
+             <PrivateRoute path="/manageServices"> 
              <ManageServices/>
-             </Route>
-             <Route path="/addService"> 
+             </PrivateRoute>
+             <PrivateRoute path="/addService"> 
              <AddService/>
-             </Route>
+             </PrivateRoute>
              <Route path="/login"> 
                <LogIn/>
              </Route>

@@ -47,9 +47,10 @@ const LogIn = () => {
     signInWithEmailAndPassword(email,password)
       .then(res => {
         toast.dismiss(loading);
-        // handleResponse(res)
-        // setUser(res)
         setLoggedInUser(res)
+        if(res.email == "test@admin.com"){
+          alert('Now You Are Admin please do not use bad')
+        }
         console.log(res);
         history.replace(from);
       }).catch(err => {
@@ -67,11 +68,14 @@ const LogIn = () => {
 
 
   const handleResponse = (res, redirect) => {
-    // setUser(res)
     setLoggedInUser(res)
-    if (redirect) {
+   if(res.email == "test@admin.com"){
+      alert('please donot use bad')
+    }
+    else if (redirect) {
       history.replace(from);
     }
+  
 
   }
 
@@ -88,6 +92,7 @@ const LogIn = () => {
               <div className="form-group">
                 <input type="email"
                   name="email"
+                  defaultValue="test@admin.com"
                   className="form-control input"
                   placeholder="@gmail.com"
                   {...register("email", { required: true })}
@@ -95,15 +100,16 @@ const LogIn = () => {
                 <br />
               </div>
               <div className="form-group ">
-                <input type="password" name="password" className="form-control input" placeholder="Password" {...register("password", { required: true })} />
+                <input type="password"
+                 name="password"
+                 defaultValue="123456"
+                 className="form-control input" 
+                 placeholder="Password"
+                  {...register("password", { required: true })} />
 
               </div>
               <div className="d-flex justify-content-between ">
-                <div>
-                  <input type="checkbox" id="RememberPassword" name="RememberPassword" value="RememberPassword" />
-                  <label style={{ paddingLeft: "5px", fontWeight: "600" }} htmlFor="RememberPassword">Remember Me</label>
-                </div>
-                <h6>Forgot Password</h6>
+               
               </div>
               <div className="d-grid gap-2">
                 <button style={{ backgroundColor: "#7b1798" }} className="btn btn-block text-white mt-4" type='submit'>Login</button>

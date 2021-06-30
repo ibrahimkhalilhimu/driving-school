@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
 import { userCardInfo, userContext } from '../../../App';
-
+import Fade from 'react-reveal/Fade';
 const ServicesCard = ({data}) => {
     const {img,id,title,price,description,_id,image} = data;
     console.log(data);
@@ -35,6 +34,7 @@ onClick={()=> {handleCardInfo(img,title,price,description,image);
   
   }}
    className="col-md-4">
+       <Fade bottom duration={2500} distance="40px">
  <div className="card">
    {
      image ? <img src={`data:image/png;base64,${image.img}`} className="rounded-circle mx-auto" alt="..."/>:
@@ -48,6 +48,7 @@ onClick={()=> {handleCardInfo(img,title,price,description,image);
 
    </div>
       </div>
+      </Fade>
  </div>
     );
 };

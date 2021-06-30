@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Fade from 'react-reveal/Fade';
 const Contact = () => {
     return (
         <div id="contact"> 
              <div className="container">
+             <Fade bottom duration={2500} distance="40px">
                 <div className="row contacts">
             <div className="col-md-6 pt-5">
                 <h1> Any Questions? Fill-In<br/> The Form & Send Today!</h1>
@@ -26,6 +27,7 @@ const Contact = () => {
                 </form>
             </div>
             </div>
+            </Fade>
             </div>
         </div>
     );

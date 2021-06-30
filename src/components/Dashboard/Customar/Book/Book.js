@@ -17,7 +17,7 @@ const Book = () => {
       setData(data)
       // const newOrder = {...loggedInUser, courseInfo,data }
       // console.log(newOrder);
-      // fetch(`http://localhost:5000/addOrder`,{
+      // fetch(`https://glacial-peak-56892.herokuapp.com/addOrder`,{
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const handlePayment = (paymentId) => {
   const newOrder = {...loggedInUser,courseInfo,
     data,
     paymentId}
-  fetch(`http://localhost:5000/addOrder`,{
+  fetch(`https://glacial-peak-56892.herokuapp.com/addOrder`,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

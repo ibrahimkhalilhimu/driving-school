@@ -5,7 +5,7 @@ import './Profile.css'
 const Profile = () => {
 
   const [loggedInUser,setLoggedInUser] = useContext(userContext)
-  console.log(loggedInUser);
+
 
     return (
         <div className="profile">
@@ -22,6 +22,7 @@ const Profile = () => {
     <p className="card-text">{loggedInUser.email}</p>
     <div className="d-grid gap-2 col-6 mx-auto">
   <button onClick={()=>setLoggedInUser({})} className="btn btn-danger" type="button">SignOut</button>
+
 </div>
   </div>
 </div>

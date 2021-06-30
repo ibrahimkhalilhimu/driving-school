@@ -12,7 +12,7 @@ const Reviews = () => {
         console.log(data);
         const newReview = {...loggedInUser,data}
 
-        fetch(`http://localhost:5000/addReview`,{
+        fetch(`https://glacial-peak-56892.herokuapp.com/addReview`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -4,11 +4,12 @@ import { AiOutlineUser,AiOutlineCar } from "react-icons/ai";
 import { BsShieldShaded,BsPencilSquare } from "react-icons/bs";
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaRegNewspaper } from "react-icons/fa";
-
+import Fade from 'react-reveal/Fade';
 const ChooseUs = () => {
     return (
         <div className="chooseUs">  
             <div className="container text-center">
+            <Fade bottom duration={2500} distance="40px">
                 <h1 className="titles">Why Choice Us</h1>
                 <div className="row">
                     <div className="col-md-4 choice ">
@@ -60,6 +61,7 @@ const ChooseUs = () => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
                     </div>
                 </div>
+                </Fade>
             </div>
         </div>
     );

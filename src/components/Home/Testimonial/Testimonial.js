@@ -5,7 +5,7 @@ import "swiper/components/pagination/pagination.min.css"
 import SwiperCore, {Lazy, Autoplay,Keyboard, Pagination,Navigation  } from 'swiper/core';
 import { Swiper, SwiperSlide } from "swiper/react";
 import TestimonialCard from './TestimonialCard';
-
+import Fade from 'react-reveal/Fade';
 // install Swiper modules
 SwiperCore.use([Lazy,Autoplay,Keyboard, Pagination,Navigation]);
 
@@ -15,7 +15,7 @@ const Testimonial = () => {
     const [reviewsData,setReviewsData] = useState([])
 
     useEffect(()=>{
-       fetch('http://localhost:5000/review')
+       fetch('https://glacial-peak-56892.herokuapp.com/review')
        .then(res => res.json())
        .then(data=> 
         setReviewsData(data))
@@ -25,6 +25,7 @@ const Testimonial = () => {
     return (
         <div className="testimonial" id="testimonial">
             <div className="container text-center">
+            <Fade bottom duration={2500} distance="40px">
                 <h1 className="title-testi">What Our Clients are saying</h1>
              
 <div className="row">
@@ -89,8 +90,10 @@ const Testimonial = () => {
 
                        </Swiper>
     
-</div>     
+</div>  
+</Fade>   
 </div>
+
 </div>
 
          

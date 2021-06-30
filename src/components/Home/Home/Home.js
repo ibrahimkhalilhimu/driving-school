@@ -8,11 +8,12 @@ import Header from '../Navbar/Header';
 import Services from '../Services/Services';
 import Team from '../Team/Team';
 import Testimonial from '../Testimonial/Testimonial';
-
+import ScrollToTop from "react-scroll-to-top";
 const Home = () => {
     return (
         <div>
            <div className="background">
+           <ScrollToTop smooth color="#6f00ff"/>
            <Header/>
             <Banner/>
            </div>

@@ -7,7 +7,7 @@ import ServicesCard from './ServicesCard';
 const Services = () => {
     const [courseData,setCourseData] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://glacial-peak-56892.herokuapp.com/courses')
         .then((response) => response.json())
         .then((data) => setCourseData(data));
     },[])

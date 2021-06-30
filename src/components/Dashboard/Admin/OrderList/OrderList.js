@@ -9,7 +9,7 @@ const OrderList = () => {
     const [orderList,setOderList] = useState([])
 const [loader,setLoader] = useState(true)
     useEffect(()=>{
-        fetch('http://localhost:5000/order')
+        fetch('https://glacial-peak-56892.herokuapp.com/order')
         .then(res => res.json())
         .then(data=>{
           setOderList(data)
@@ -27,7 +27,7 @@ const [loader,setLoader] = useState(true)
         })
         .then(willDelete => {
           if (willDelete) {
-            fetch(`http://localhost:5000/deleteOrder/${_id}`,{
+            fetch(`https://glacial-peak-56892.herokuapp.com/deleteOrder/${_id}`,{
               method:'DELETE',
           })
           .then(res => res.json())

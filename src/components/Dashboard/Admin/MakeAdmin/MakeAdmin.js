@@ -8,7 +8,7 @@ import { IdealBankElement } from '@stripe/react-stripe-js';
 const MakeAdmin = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
-     fetch('http://localhost:5000/makeAdmin',{
+     fetch('https://glacial-peak-56892.herokuapp.com/makeAdmin',{
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const MakeAdmin = () => {
             <div className="fromSection mx-auto">
             <form className="" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group mt-5">
-                        <h4>Email</h4>
+                    <label className="form-label fs-4 fw-bold">Email</label>
                         <input type="email" 
                     name="email" 
                     className="form-control "

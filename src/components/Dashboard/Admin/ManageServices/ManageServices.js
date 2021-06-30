@@ -7,7 +7,7 @@ const ManageServices = () => {
     const [loader,setLoader] = useState(true)
    
     useEffect(()=>{
-        fetch('http://localhost:5000/courses')
+        fetch('https://glacial-peak-56892.herokuapp.com/courses')
         .then(res => res.json())
         .then(data=>{
             setManageService(data)
@@ -24,7 +24,7 @@ const ManageServices = () => {
         })
         .then(willDelete => {
           if (willDelete) {
-            fetch(`http://localhost:5000/deleteCourse/${_id}`,{
+            fetch(`https://glacial-peak-56892.herokuapp.com/deleteCourse/${_id}`,{
               method:'DELETE',
           })
           .then(res => res.json())
