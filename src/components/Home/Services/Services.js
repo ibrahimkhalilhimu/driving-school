@@ -14,9 +14,9 @@ const Services = () => {
     console.log(courseData);
     return (
         <div id="Services" className='services'>
-            <div className="container text-center">
+            <div className="container text-center ">
                 <h1 className="titles">Our Services</h1>
-                <div className="row">
+                <div className="row justify-content-center">
     {/* <div className="col-md-6"> */}
     {
         courseData.length ===0 &&

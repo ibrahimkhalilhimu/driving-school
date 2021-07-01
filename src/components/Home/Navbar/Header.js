@@ -39,9 +39,12 @@ const Header = () => {
             </li>
             <li className="nav-item">
               {
-                loggedInUser.email ? <Link className="nav-link" to="/">
-                  <img src={loggedInUser.photoURL || "https://i.ibb.co/2Kt6fqv/images.png"} alt="" />
-                </Link> :
+                loggedInUser.email ? <Link className="nav-link" to="/" data-bs-toggle="tooltip" data-bs-placement="bottom" title={loggedInUser.name || loggedInUser.displayName}> 
+               <img src={loggedInUser.photoURL || "https://i.ibb.co/2Kt6fqv/images.png"} alt="" />
+                </Link>
+                
+                
+                :
                   <Link className="nav-link login" to="/login">Login</Link>
               }
 
