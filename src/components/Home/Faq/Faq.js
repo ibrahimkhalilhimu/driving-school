@@ -3,6 +3,7 @@ import './Faq.css'
 import FaqData from './FaqData';
 import FaqQuestion from './FaqQuestion';
 import Fade from 'react-reveal/Fade';
+import faqPic from '../../../img/20943401.jpg';
 const Faq = () => {
     const [faqData,setFaqData] = useState(FaqData)
     return (
@@ -12,7 +13,7 @@ const Faq = () => {
                 <div className="row pt-5">
                     <div className="col-md-5">
                     <Fade left duration={2000} distance="40px">
-                    <img className='img-fluid' src="https://i.ibb.co/5hX5TRX/Website-FAQ-section-User-helpdesk-customer-support-frequently-asked-questions-Problem-solution-quiz.jpg" alt="" />
+                    <img className='img-fluid' src={faqPic} alt="" />
                     </Fade>
                     </div>
                     

@@ -13,7 +13,7 @@ const Services = () => {
     },[])
     console.log(courseData);
     return (
-        <div className='services'>
+        <div id="Services" className='services'>
             <div className="container text-center">
                 <h1 className="titles">Our Services</h1>
                 <div className="row">

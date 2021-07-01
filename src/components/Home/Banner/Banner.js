@@ -2,6 +2,7 @@ import React from 'react';
 import './Banner.css'
 import Fade from 'react-reveal/Fade';
 import wave from '../../../img/pngkey.com-wave-shape-png-5161226.png';
+import drive from '../../../img/3Z_2103.w026.n002.283B.p900.283.jpg'
 const Banner = () => {
     return (
         <div className="banner">
@@ -17,7 +18,7 @@ const Banner = () => {
                 </div>
                 <div className="col-md-6">
                 
-                    <img className="img-fluid animated" src="https://i.ibb.co/Ky8XXj1/Driving-school-cartoon-banner-with-driver-hands-on-car-steering-wheel-and-confetti-falling-Auto-less.jpg" alt="Driving Image" />
+                    <img className="img-fluid animated" src={drive} alt="Driving Image" />
                   
                     </div>
                     

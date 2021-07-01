@@ -2,7 +2,10 @@ import React from 'react';
 import './Team.css'
 import { FaFacebook,FaTwitterSquare,FaYoutube,FaInstagram } from "react-icons/fa";
 import Fade from 'react-reveal/Fade';
-
+import himu from '../../../img/ibrahim.jpg'
+import alamin from '../../../img/alamin.jpg'
+import saiful from '../../../img/saiful.jpg'
+import zihad from '../../../img/zihad.jpg'
 const Team = () => {
     return (
         <div className="team">
@@ -13,7 +16,7 @@ const Team = () => {
                     <div className="col-md-4">
                         <div className="card">
                             <div className="front">
-                                <img className="img-fluid" src="https://i.ibb.co/f4vCC6m/121419252-798374920909813-7495845855244719028-n.jpg" alt="" />
+                                <img className="img-fluid" src={himu} alt="" />
                             </div>
                             <div className="back">
                                 <div className="back-content middle">
@@ -42,7 +45,7 @@ const Team = () => {
                     <div className="col-md-4">
                         <div className="card ">
                             <div className="front">
-                                <img className="img-fluid" src="https://i.ibb.co/SP7qz1x/201458935-962728781207650-870207678202895217-n.jpg" alt="" />
+                                <img className="img-fluid" src={alamin} alt="" />
                             </div>
                             <div className="back">
                                 <div className="back-content middle">
@@ -71,7 +74,7 @@ const Team = () => {
                     <div className="col-md-4">
                         <div className="card ">
                             <div className="front">
-                                <img className="img-fluid" src="https://i.ibb.co/P4SrsVH/92025927-746468085884340-1296511993708019712-n.jpg" alt="" />
+                                <img className="img-fluid" src={saiful} alt="" />
                             </div>
                             <div className="back">
                                 <div className="back-content middle">
@@ -100,7 +103,7 @@ const Team = () => {
                     <div className="col-md-4 mt-4">
                         <div className="card ">
                             <div className="front">
-                                <img className="img-fluid" src="https://i.ibb.co/tC35GLk/130255507-1036028706860733-8337769294205120067-n.jpg" alt="" />
+                                <img className="img-fluid" src={zihad} alt="" />
                             </div>
                             <div className="back">
                                 <div className="back-content middle">

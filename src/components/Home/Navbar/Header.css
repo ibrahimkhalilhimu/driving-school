@@ -17,3 +17,15 @@ button {
   background-image: linear-gradient(to right, #a517ba, #5f1782);
   top: fixed;
 }
+.headerHover {
+  background-color: black;
+}
+.headerHover a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  display: none;
+}
+Link:hover {
+  display: block;
+}
