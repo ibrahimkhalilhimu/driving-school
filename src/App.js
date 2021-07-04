@@ -17,6 +17,7 @@ import MakeAdmin from './components/Dashboard/Admin/MakeAdmin/MakeAdmin';
 import OrderList from './components/Dashboard/Admin/OrderList/OrderList';
 import ManageServices from './components/Dashboard/Admin/ManageServices/ManageServices';
 import AddService from './components/Dashboard/Admin/AddService/AddService';
+import EditService from './components/Dashboard/Admin/AddService/EditService';
 
 
 export const userContext = createContext()
@@ -24,6 +25,7 @@ export const userCardInfo = createContext()
 function App() {
 
 const [courseInfo,setCourseInfo] = useState({})
+const [editService,setEditService] = useState({})
 const [loggedInUser,setLoggedInUser] = useState({success: false})
 const [isAdmin,setIsAdmin] = useState(false)
 
@@ -33,7 +35,7 @@ const [isAdmin,setIsAdmin] = useState(false)
 
 
     <div className="App">
-      <userCardInfo.Provider value={[courseInfo,setCourseInfo]}>
+      <userCardInfo.Provider value={[courseInfo,setCourseInfo,editService,setEditService]}>
       <userContext.Provider value={[loggedInUser,setLoggedInUser,isAdmin,setIsAdmin]} >
       <Router>
          <Switch>
@@ -61,12 +63,15 @@ const [isAdmin,setIsAdmin] = useState(false)
              <PrivateRoute path="/orderList"> 
              <OrderList/>
              </PrivateRoute>
-             <PrivateRoute path="/manageServices"> 
+             <Route path="/manageServices"> 
              <ManageServices/>
-             </PrivateRoute>
+             </Route>
              <PrivateRoute path="/addService"> 
              <AddService/>
              </PrivateRoute>
+             <Route path="/editService"> 
+             <EditService/>
+             </Route>
              <Route path="/login"> 
                <LogIn/>
              </Route>

@@ -2,9 +2,20 @@ import React, { useContext } from 'react';
 import { userContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 import './Profile.css'
+import swal from 'sweetalert'
+
 const Profile = () => {
 
-  const [loggedInUser,setLoggedInUser] = useContext(userContext)
+  
+const [loggedInUser,setLoggedInUser,isAdmin,setIsAdmin] = useContext(userContext)
+
+const handleAmin =()=>{
+  swal({
+    title: "Please Do not use bad",
+    text: "Email: test@admin.com  password:123456",
+    icon: "warning",
+  });
+}
 
 
     return (
@@ -22,10 +33,18 @@ const Profile = () => {
     <p className="card-text">{loggedInUser.email}</p>
     <div className="d-grid gap-2 col-6 mx-auto">
   <button onClick={()=>setLoggedInUser({})} className="btn btn-danger" type="button">SignOut</button>
+</div>
+{ 
+!isAdmin && <div className="mt-5">
+<p className="text-center text-danger">If Yoy See Admin Panel Click the button and see email and password</p>
+         <button onClick={handleAmin} className="btn btn-danger">Admin Panel Click</button>
 
 
 </div>
+}
+
   </div>
+ 
 </div>
               </div>
           </div>

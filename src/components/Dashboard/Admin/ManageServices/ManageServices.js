@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Sidebar/Sidebar';
 import TableLoader from '../../Loader/TableLoader/TableLoader';
-import swal from 'sweetalert';
+import ManageServicesCard from './ManageServicesCard';
 const ManageServices = () => {
     const [manageService,setManageService] = useState([])
     const [loader,setLoader] = useState(true)
@@ -15,31 +15,7 @@ const ManageServices = () => {
         })
       },[])
 
-      const handleClickDelete= (e,_id)=>{
-        swal({
-          title: "Are you sure?",
-          text: "Are you sure that you want to leave this page?",
-          icon: "warning",
-          dangerMode: true,
-        })
-        .then(willDelete => {
-          if (willDelete) {
-            fetch(`https://glacial-peak-56892.herokuapp.com/deleteCourse/${_id}`,{
-              method:'DELETE',
-          })
-          .then(res => res.json())
-          .then(result =>{
-              console.log(result);
-              swal("Deleted!", "Your imaginary file has been deleted!", "success");
-              // alert('delete success')
-              e.target.parentNode.parentNode.style.display = 'none'
-              console.log( e.target.parentNode.parentNode);
-          })
-          }
-        });
-  
-      }
-  
+    
 
 
 
@@ -62,18 +38,7 @@ const ManageServices = () => {
   </thead>
   <tbody>
 {
-    manageService.map(data=>
-        <tr>
-        
-      <td >{data.title}</td>
-      <td >{data.description.slice(0,50)}..</td>
-      <td>${data.price}</td>
-      <td>
-<button onClick={(e) =>handleClickDelete(e,data._id)} className="btn btn-danger">Delete</button>
-
-      </td>
-    </tr>
-    )
+    manageService.map(data=><ManageServicesCard data={data} key={data.id}></ManageServicesCard> )
 }
 
 

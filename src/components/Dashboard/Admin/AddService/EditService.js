@@ -1,50 +1,42 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AiOutlineCloudUpload } from 'react-icons/ai';
+import { userCardInfo } from '../../../../App';
 import Sidebar from '../../Sidebar/Sidebar';
-import './AddService.css'
-import { AiOutlineCloudUpload } from "react-icons/ai";
-import swal from 'sweetalert'
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert'
 
+const EditService = () => {
 
-
-
-const AddService = () => {
-
-
-    const [file, setFile] = useState(null);
+    const [courseInfo,setCourseInfo, editService,setEditService] = useContext(userCardInfo)
+    const {_id,title,img,description,price,image} = editService
+    console.log(editService);
+    const [editImage, setEditImage] = useState(null);
     const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmit = data => {
-        console.log(data); 
-         const CourseData = {
+        const updateData = {
             title: data.title,
             price: data.price,
             description: data.description,
-            img: file
+            img: editImage
         };
-        console.log('CourseData', CourseData)
+        console.log('service Data', updateData)
 
-        fetch('http://localhost:5000/addCourses', {
-            method: 'POST',
+        fetch(`http://localhost:5000/update/${_id}`,{
+            method:'PATCH',
             headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify(CourseData)
-          })
-          .then(response => response.json())
-          .then(data => {
-            if(data){
-            swal("Add Course Successfully!", "Your Add Course Successfully!", "success");
-
+            body:JSON.stringify(updateData)
+        })
+        .then(res => res.json())
+        .then( result => {
+            console.log(result);
+            if (result) {
+                swal("Update Successfully!", "Your Update Successfully!", "success");
+            
             }
-          })
-          .catch(error => {
-              console.log(error);
-            swal("Sorry!", "Please Fill out the form or Right Data below!", "error");
-          })
-
-
+        })
     }
 
-    
 
     const handleFileChange = (e) => {
         const imageData = new FormData();
@@ -58,7 +50,7 @@ const AddService = () => {
           .then(response => response.json())
           .then(data => {
          
-            setFile(data.data.display_url)
+          setEditImage(data.data.display_url)
           console.log(data.data.display_url);
           })
           .catch(error => {
@@ -67,33 +59,10 @@ const AddService = () => {
     }
 
 
-    // const handleSubmit = (e) =>{
-    //     const formData = new FormData()
-    //     formData.append('file', file)
-    //     formData.append('title', info.title)
-    //     formData.append('description', info.description)
-    //     formData.append('price', info.price)
-    //     fetch('https://glacial-peak-56892.herokuapp.com/addCourses', {
-    //         method: 'POST',
-    //         body: formData
-    //       })
-    //       .then(response => response.json())
-    //       .then(data => {
-    //         if(data){
-    //         swal("Add Course Successfully!", "Your Add Course Successfully!", "success");
-
-    //         }
-    //       })
-    //       .catch(error => {
-    //         swal("Sorry!", "Please Fill out the form or Right Data below!", "error");
-    //       })
-    //     e.preventDefault();
-    // }
 
     return (
-
-        <div className="addService">
-            <Sidebar></Sidebar>
+        <div className="editService">
+              <Sidebar></Sidebar>
             <section className="mt-5 p-4">
 
                 <form className="W-100" onSubmit={handleSubmit(onSubmit)} >
@@ -104,9 +73,11 @@ const AddService = () => {
                 <input type="text" 
                  
                     name="title" 
+                    {...register("title", {required: true})}
                     className="form-control "
                     placeholder="Enter Title"
-                    {...register("title", {required: true})}
+                    defaultValue={title}
+                 
      />
                     </div>
                     <div  className="col-md-5 form-group ">
@@ -115,9 +86,10 @@ const AddService = () => {
                       style={{ maxWidth: "270px" }}
                      name="price" 
                      {...register("price", {required: true})}
+                   
                     className="form-control "
                     placeholder="Enter Price"
-                   
+                    defaultValue={price}
      />
                     </div>
                     <div className="col-md-5 form-group mt-3">
@@ -126,9 +98,10 @@ const AddService = () => {
                          
                     name="description" 
                     {...register("description", {required: true})}
+                   
                     className="form-control "
                     placeholder="Enter Designation"
-                  
+                    defaultValue={description}
      />
                     </div>
                     <div  className="col-md-5 form-group mt-3">
@@ -136,11 +109,11 @@ const AddService = () => {
                  <input 
                   hidden="hidden"
                   name="img"
-                
                   onChange={handleFileChange}
+                 
                  id="file"  
                  type="file"
-                
+                //  defaultValue={img || image}
                />
                <label className="btn uploadImage" htmlFor="file">
                <AiOutlineCloudUpload size="24"/>  Upload image
@@ -149,7 +122,9 @@ const AddService = () => {
                     </div>
 </div>
                     <div className="form-group text-center" >
-                        <button type="submit" className="btn bg-success text-white mt-3">Submit</button>
+                        
+                        <button type="submit" className="btn bg-success text-white mt-3">Update</button>
+                      
                     </div>
 
 
@@ -167,4 +142,4 @@ const AddService = () => {
     );
 };
 
-export default AddService;
+export default EditService;

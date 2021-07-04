@@ -92,7 +92,7 @@ const LogIn = () => {
               <div className="form-group">
                 <input type="email"
                   name="email"
-                  defaultValue="test@admin.com"
+                  // defaultValue="test@admin.com"
                   className="form-control input"
                   placeholder="@gmail.com"
                   {...register("email", { required: true })}
@@ -102,7 +102,7 @@ const LogIn = () => {
               <div className="form-group ">
                 <input type="password"
                  name="password"
-                 defaultValue="123456"
+                //  defaultValue="123456"
                  className="form-control input" 
                  placeholder="Password"
                   {...register("password", { required: true })} />
