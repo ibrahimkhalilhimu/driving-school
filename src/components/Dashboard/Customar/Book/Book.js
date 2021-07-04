@@ -15,34 +15,16 @@ const Book = () => {
      
     const onSubmit = data => {
       setData(data)
-      // const newOrder = {...loggedInUser, courseInfo,data }
-      // console.log(newOrder);
-      // fetch(`https://glacial-peak-56892.herokuapp.com/addOrder`,{
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(newOrder)
-      
-        
-
-      // })
-      // .then(res=>res.json())
-      // .then(data => {
-      //   if(data){
-      //    console.log(data);
-      //   }
-      // })
-      // .catch(errors => {
-      //   console.error(errors)
-      // })
     }
 
 
 const handlePayment = (paymentId) => {
   const newOrder = {...loggedInUser,courseInfo,
     data,
-    paymentId}
+    paymentId,
+    OrderStatus: "Pending",
+  
+  }
   fetch(`https://glacial-peak-56892.herokuapp.com/addOrder`,{
     method: 'POST',
     headers: {

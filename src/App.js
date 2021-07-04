@@ -60,9 +60,9 @@ const [isAdmin,setIsAdmin] = useState(false)
              <PrivateRoute path="/makeAdmin"> 
              <MakeAdmin/>
              </PrivateRoute>
-             <PrivateRoute path="/orderList"> 
+             <Route path="/orderList"> 
              <OrderList/>
-             </PrivateRoute>
+             </Route>
              <Route path="/manageServices"> 
              <ManageServices/>
              </Route>

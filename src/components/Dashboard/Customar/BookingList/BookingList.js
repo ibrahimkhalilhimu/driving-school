@@ -26,16 +26,18 @@ console.log(order);
     }
 {
   order.map(data=>
-    <div className="col-md-6">
+    <div key={data._id} className="col-md-4">
     <div className="card">
-      <div className="d-flex ">
-      {
+      <div className="d-flex justify-content-between  ">
+   <div className="">
+   {
      data.courseInfo.image ? <img src={`data:image/png;base64,${data.courseInfo.image.img}`} className="rounded-circle" alt="..."/>:
      <img src={data.courseInfo.img} className="rounded-circle" alt="..."/>
    }
-      {/* <img src={data.courseInfo.img} className="rounded-circle" alt="..."/> */}
-      <div className="d-flex justify-content-end">
-        
+   </div>
+     
+      <div className="mt-4 p-1">
+        <h4 className={data.OrderStatus.toLowerCase()}>{data.OrderStatus}</h4>
       </div>
       </div>
 

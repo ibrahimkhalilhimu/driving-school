@@ -68,3 +68,14 @@
   width: 100%;
   height: 100vh;
 }
+.btnPending {
+  background-color: #ffe3e3;
+  color: #ff4545;
+}
+.btnDone {
+  background-color: #c6ffe0;
+  color: #009444;
+}
+.btnOnGoing {
+  background-color: #ffbd3e;
+}
