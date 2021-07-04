@@ -37,7 +37,7 @@ console.log(order);
    </div>
      
       <div className="mt-4 p-1">
-        <h4 className={data.OrderStatus.toLowerCase()}>{data.OrderStatus}</h4>
+        <button className={data.OrderStatus === "Pending" ? "btn bookPending" : data.OrderStatus === "Done" ? "btn bookDone" : "btn bookOnGoing "}>{data.OrderStatus}</button>
       </div>
       </div>
 

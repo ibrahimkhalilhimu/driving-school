@@ -24,7 +24,7 @@ const AddService = () => {
         };
         console.log('CourseData', CourseData)
 
-        fetch('http://localhost:5000/addCourses', {
+        fetch('https://glacial-peak-56892.herokuapp.com/addCourses', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(CourseData)

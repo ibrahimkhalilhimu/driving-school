@@ -22,7 +22,7 @@ const EditService = () => {
         };
         console.log('service Data', updateData)
 
-        fetch(`http://localhost:5000/update/${_id}`,{
+        fetch(`https://glacial-peak-56892.herokuapp.com/update/${_id}`,{
             method:'PATCH',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(updateData)
